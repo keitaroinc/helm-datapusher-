@@ -35,8 +35,65 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8000
               protocol: TCP
+           env:
+            - name: DATAPUSHER_MAX_CONTENT_LENGTH
+              value: {{ .Values.datapusher-plus.maxContentLength | quote }}
+            - name: DATAPUSHER_CHUNK_SIZE
+              value: {{ .Values.datapusher-plus.chunkSize | quote }}
+            - name: DATAPUSHER_CHUNK_INSERT_ROWS
+              value: {{ .Values.datapusher-plus.insertRows | quote }}
+            - name: DATAPUSHER_DOWNLOAD_TIMEOUT
+              value: {{ .Values.datapusher-plus.downloadTimeout | quote }}
+            - name: DATAPUSHER_SSL_VERIFY
+              value: {{ .Values.datapusher-plus.datapusherSslVerify | quote }}
+            - name: DATAPUSHER_REWRITE_RESOURCES
+              value: {{ .Values.datapusher-plus.datapusherRewriteResources | quote }}
+            - name: DATAPUSHER_REWRITE_URL
+              value: {{ .Values.datapusher-plus.datapusherRewriteUrl | quote }}
+            - name: DATAPUSHER_DEBUG_MODE
+              value: {{ .Values.datapusher-plus.debug | quote }}
+            - name: DATAPUSHER_TESTING
+              value: {{ .Values.datapusher-plus.testing | quote }}
+            - name: DATAPUSHER_WRITE_ENGINE_URL
+              value: {{ .Values.datapusher-plus.write_engine_url | quote }}
+            - name: DATAPUSHER_PREVIEW_ROWS
+              value: {{ .Values.datapusher-plus.preview_rows | quote }}
+            - name: DATAPUSHER_DOWNLOAD_PREVIEW_ONLY
+              value: {{ .Values.datapusher-plus.download_preivew_only | quote }}
+            - name: DATAPUSHER_DEFAULT_EXCEL_SHEET
+              value: {{ .Values.datapusher-plus.default_excel_sheet | quote }}
+            - name: DATAPUSHER_SORT_AND_DUPE_CHECK
+              value: {{ .Values.datapusher-plus.sort_and_dupe_check | quote }}
+            - name: DATAPUSHER_DEDUP
+              value: {{ .Values.datapusher-plus.dedup | quote }}
+            - name: DATAPUSHER_ADD_SUMMARY_STATS_RESOURCE
+              value: {{ .Values.datapusher-plus.add_summary_stats_resource | quote }}
+            - name: DATAPUSHER_SUMMARY_STATS_WITH_PREVIEW
+              value: {{ .Values.datapusher-plus.summary_stats_with_preview | quote }}
+            - name: DATAPUSHER_SUMMARY_STATS_OPTIONS
+              value: {{ .Values.datapusher-plus.summary_stats_options | quote }}
+            - name: DATAPUSHER_AUTO_INDEX_THRESHOLD
+              value: {{ .Values.datapusher-plus.auto_index_threshold | quote }}
+            - name: DATAPUSHER_AUTO_UNIQUE_INDEX
+              value: {{ .Values.datapusher-plus.auto_unique_index | quote }}
+            - name: DATAPUSHER_AUTO_INDEX_DATES
+              value: {{ .Values.datapusher-plus.auto_index_dates | quote }}
+            - name: DATAPUSHER_AUTO_ALIAS
+              value: {{ .Values.datapusher-plus.auto_alias | quote }}
+            - name: DATAPUSHER_AUTO_ALIAS_UNIQUE
+              value: {{ .Values.datapusher-plus.auto_alias_unique | quote }}
+            - name: DATAPUSHER_PII_SCREENING
+              value: {{ .Values.datapusher-plus.pii_screening | quote }}
+            - name: DATAPUSHER_PII_QUICK_SCREEN
+              value: {{ .Values.datapusher-plus.pii_quick_screen | quote }}
+            - name: DATAPUSHER_PII_FOUND_ABORT
+              value: {{ .Values.datapusher-plus.pii_found_abort | quote }}
+            - name: DATAPUSHER_PII_SHOW_CANDIDATES
+              value: {{ .Values.datapusher-plus.pii_show_candidates | quote }}
+            - name: DATAPUSHER_PII_REGEX_RESOURCE_ID_OR_ALIAS
+              value: {{ .Values.datapusher-plus.pii_regex_resource_id_or_alias | quote }}
           livenessProbe:
             httpGet:
               path: /
