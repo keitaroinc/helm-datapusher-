@@ -94,6 +94,10 @@ spec:
               value: {{ index .Values "datapusher-plus" "pii_show_candidates" | quote }}
             - name: DATAPUSHER_PII_REGEX_RESOURCE_ID_OR_ALIAS
               value: {{ index .Values "datapusher-plus" "pii_regex_resource_id_or_alias" | quote }}
+            - name: DATAPUSHER_ROLE_NAME
+              value: {{ index .Values "datapusher-plus" "db" "role_name" | quote }}
+            - name: DATAPUSHER_ROLE_PASS
+              value: {{ index .Values "datapusher-plus" "db" "role_pass"  | quote }}
           livenessProbe:
             httpGet:
               path: /

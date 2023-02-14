@@ -16,6 +16,10 @@ fullnameOverride: ""
 
 datapusher-plus:
 
+  db:
+    role_name: "datapusher"
+    role_pass: "pass"
+
   # turns on logger at Debug level
   debug: "False"
   # If False, configures the logger for production
