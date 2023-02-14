@@ -1,0 +1,13 @@
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "{{ include "datapusher-plus.headless-service-name" . }}"
+  labels:
+    {{- include "datapusher-plus.labels" . | nindent 4 }}
+spec:
+  clusterIP: "None"
+  ports:
+    - port: {{ .Values.service.port }}
+      name: "datapusher-plus-headless"
+  selector:
+    {{- include "datapusher-plus.selectorLabels" . | nindent 4 }}
