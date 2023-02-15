@@ -51,6 +51,13 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Define the name of the headless service for solr
+*/}}
+{{- define "datapusher-plus.headless-service-name" -}}
+{{- printf "%s-%s" (include "datapusher-plus.fullname" .) "headless" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "datapusher-plus.serviceAccountName" -}}

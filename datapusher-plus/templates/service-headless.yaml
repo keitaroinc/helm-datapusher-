@@ -1,7 +1,7 @@
 apiVersion: "v1"
 kind: "Service"
 metadata:
-  name: "{{ include "datapusher-plus.headless-service-name" . }}"
+  name: {{ include "datapusher-plus.headless-service-name" . }}
   labels:
     {{- include "datapusher-plus.labels" . | nindent 4 }}
 spec:
